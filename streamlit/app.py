@@ -8,7 +8,12 @@ import time
 import os
 
 # Load model
-model = tf.keras.models.load_model('my_model.keras')
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "my_model.keras")
+
+model = tf.keras.models.load_model(model_path, compile=False)
 
 # ---------- Video Prediction ----------
 def img_pred(video_path, model, batch_size=5):
